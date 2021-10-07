@@ -10,6 +10,9 @@ public class Main {
         Pessoa pessoaDois = new Pessoa(1, "Luiz", "luiz@luiz.com");
         Pessoa pessoaTres = new Pessoa(1, "Nogueira", "nogueira@nogueira.com");
 
+        System.out.println(pessoaUm);
+        System.out.println(pessoaDois);
+        System.out.println(pessoaTres);
 
     }
 }
