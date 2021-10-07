@@ -22,22 +22,29 @@ public class Main {
 
         // removendo do banco de dados
 
-        em.getTransaction().begin();
+        try {
+            em.getTransaction().begin();
 
-        Pessoa p = em.find(Pessoa.class, 1);
-        System.out.println("O registro da pessoa agora é: " + p);
+            Pessoa p = em.find(Pessoa.class, 1);
+            System.out.println("O registro da pessoa agora é: " + p);
 
-        p.setEmail("pedroluiz@pedroluiz.com");
+            p.setEmail("pedroluiz@pedroluiz.com");
 
-        // primeiro busquei esse objeto no banco, agora vou deletá-lo
-        em.remove(p);
+            // primeiro busquei esse objeto no banco, agora vou deletá-lo
+            em.remove(p);
 
-        // eu removi o objeto que eu busquei mas o objeto usado para armazenar a consulta ainda possui informações
-        System.out.println("Registro ainda guardado em p: " + p);
+            // eu removi o objeto que eu busquei mas o objeto usado para armazenar a consulta ainda possui informações
+            System.out.println("Registro ainda guardado em p: " + p);
 
-        em.getTransaction().commit();
+            em.getTransaction().commit();
 
-        em.close();
-        emf.close();
+        } catch (NullPointerException e) {
+            System.out.println("Exception capturada: " + e.getMessage());
+
+        } finally {
+            em.close();
+            emf.close();
+
+        }
     }
 }
