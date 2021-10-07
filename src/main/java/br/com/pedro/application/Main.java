@@ -10,16 +10,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Pessoa pessoaUm = new Pessoa(1, "Kane", "pedro@pedro.com");
-        Pessoa pessoaDois = new Pessoa(1, "Luiz", "luiz@luiz.com");
-        Pessoa pessoaTres = new Pessoa(1, "Nogueira", "nogueira@nogueira.com");
+        // passando null pois é auto incremento
+        Pessoa pessoaUm = new Pessoa(null, "Kane", "pedro@pedro.com");
+        Pessoa pessoaDois = new Pessoa(null, "Luiz", "luiz@luiz.com");
+        Pessoa pessoaTres = new Pessoa(null, "Nogueira", "nogueira@nogueira.com");
 
         System.out.println(pessoaUm);
         System.out.println(pessoaDois);
         System.out.println(pessoaTres);
 
         // aqui criamos o fabricador da conexão que estamos usando, por isso passar o nome da persistenceUnit que demos no persistrence.xml
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("con-cadastro-pesoas");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("con-cadastro-pessoas");
         // aqui criamos o gerenciador dessa nossa conexão
         EntityManager em = emf.createEntityManager();
 
@@ -28,7 +29,7 @@ public class Main {
         em.persist(pessoaDois);
         em.persist(pessoaTres);
 
-
+        System.out.println("Cadastrado com sucesso");
 
     }
 }
