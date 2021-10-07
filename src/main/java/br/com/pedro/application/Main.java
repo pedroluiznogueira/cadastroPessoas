@@ -27,20 +27,28 @@ public class Main {
         // fazendo uma transação entre a aplicação e o banco
 
         // inicializando a transação
-        em.getTransaction().begin();
+        // em.getTransaction().begin();
 
         // fazendo a persistência dos dados, que nada mais é do que manipular os comandos dml, que será feita com o gerenciador
-        em.persist(pessoaUm);
-        em.persist(pessoaDois);
-        em.persist(pessoaTres);
+        // em.persist(pessoaUm);
+        // em.persist(pessoaDois);
+        // em.persist(pessoaTres);
 
         // gravando a transação
-        em.getTransaction().commit();
+        // em.getTransaction().commit();
+
+        // consultando no banco de dados
+
+        // com o método find eu passo a classe/entidade/tabela que eu quero consultar e qual a posição desse objeto
+        Pessoa pessoaQuatro = em.find(Pessoa.class, 1);
+        // retornando o objeto que veio na consulta
+        System.out.println("A primeira pessoa registrada no banco é: " + pessoaQuatro);
 
         // finalizando a transação após o fim
         em.close();
+        emf.close();
 
-        System.out.println("Cadastrado com sucesso");
+        // System.out.println("Cadastrado com sucesso");
 
     }
 }
