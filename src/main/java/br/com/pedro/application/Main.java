@@ -24,10 +24,21 @@ public class Main {
         // aqui criamos o gerenciador dessa nossa conexão
         EntityManager em = emf.createEntityManager();
 
+        // fazendo uma transação entre a aplicação e o banco
+
+        // inicializando a transação
+        em.getTransaction().begin();
+
         // fazendo a persistência dos dados, que nada mais é do que manipular os comandos dml, que será feita com o gerenciador
         em.persist(pessoaUm);
         em.persist(pessoaDois);
         em.persist(pessoaTres);
+
+        // gravando a transação
+        em.getTransaction().commit();
+
+        // finalizando a transação após o fim
+        em.close();
 
         System.out.println("Cadastrado com sucesso");
 
