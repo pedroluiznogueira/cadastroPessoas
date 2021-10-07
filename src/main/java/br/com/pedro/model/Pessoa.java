@@ -13,7 +13,7 @@ public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)// referencia que isso será um id, que é uma chave primária e que será auto_increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // referencia que isso será um id, que é uma chave primária e que será auto_increment
     private Integer id;
 
     private String nome;
