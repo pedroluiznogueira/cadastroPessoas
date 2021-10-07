@@ -1,13 +1,21 @@
 package br.com.pedro.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 // usa essa interface para ter o ID da classe
+@Entity // referencia que essa classe vai ser uma entidade pro banco
 public class Pessoa implements Serializable {
-    // id da classe
+
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)// referencia que isso será um id, que é uma chave primária e que será auto_increment
     private Integer id;
+
     private String nome;
     private String email;
 
