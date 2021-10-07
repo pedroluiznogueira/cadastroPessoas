@@ -20,12 +20,18 @@ public class Main {
         // aqui criamos o gerenciador dessa nossa conexão
         EntityManager em = emf.createEntityManager();
 
-        // consultando no banco de dados
+        // atualizando no banco de dados
+
         em.getTransaction().begin();
 
-        System.out.println("A primeira pessoa registrada no banco é: " + em.find(Pessoa.class, 1));
-        System.out.println("A segunda pessoa registrada no banco é: " + em.find(Pessoa.class, 2));
-        System.out.println("A terceira pessoa registrada no banco é: " + em.find(Pessoa.class, 3));
+        Pessoa p = em.find(Pessoa.class, 1);
+        System.out.println("O registro da pessoa agora é: " + p);
+
+        p.setEmail("pedroluiz@pedroluiz.com");
+
+        // esse objeto já havia sido persistido, se eu persistí-lo denovo após alterar os atributos, vou atualizá-lo
+        em.persist(p);
+        System.out.println("O registro da pessoa após o registro é:" + p);
 
         em.getTransaction().commit();
 
