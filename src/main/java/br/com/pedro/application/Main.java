@@ -22,5 +22,13 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("con-cadastro-pesoas");
         // aqui criamos o gerenciador dessa nossa conexão
         EntityManager em = emf.createEntityManager();
+
+        // fazendo a persistência dos dados, que nada mais é do que manipular os comandos dml, que será feita com o gerenciador
+        em.persist(pessoaUm);
+        em.persist(pessoaDois);
+        em.persist(pessoaTres);
+
+
+
     }
 }
