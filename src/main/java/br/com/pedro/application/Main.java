@@ -20,7 +20,7 @@ public class Main {
         // aqui criamos o gerenciador dessa nossa conexão
         EntityManager em = emf.createEntityManager();
 
-        // atualizando no banco de dados
+        // removendo do banco de dados
 
         em.getTransaction().begin();
 
@@ -29,9 +29,11 @@ public class Main {
 
         p.setEmail("pedroluiz@pedroluiz.com");
 
-        // esse objeto já havia sido persistido, se eu persistí-lo denovo após alterar os atributos, vou atualizá-lo
-        em.persist(p);
-        System.out.println("O registro da pessoa após o registro é:" + p);
+        // primeiro busquei esse objeto no banco, agora vou deletá-lo
+        em.remove(p);
+
+        // eu removi o objeto que eu busquei mas o objeto usado para armazenar a consulta ainda possui informações
+        System.out.println("Registro ainda guardado em p: " + p);
 
         em.getTransaction().commit();
 
