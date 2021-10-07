@@ -1,4 +1,7 @@
 package br.com.pedro.model;
 
-public class Pessoa {
+import java.io.Serializable;
+
+// usa essa interface para ter o ID da classe
+public class Pessoa implements Serializable {
 }
